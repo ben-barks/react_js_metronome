@@ -11,9 +11,8 @@ class RangeSlider extends Component{
         name="bpm"
         min="0"
         max="218"
-        >
+        ></input>
         <label for="bpm">BPM</label>
-        </input>
       </div>
     )
   }
