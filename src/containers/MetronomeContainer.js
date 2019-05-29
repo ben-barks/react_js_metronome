@@ -20,9 +20,11 @@ class MetronomeContainer extends Component{
       snd.play();
     }
 
-  handleClick(){
-    const atInterval = 6 * this.state.bpm;
-    const nIntervId = setInterval(playAudio, atInterval);
+  handlePlay(){
+    const atInterval = this.state.bpm * 6;
+    const nIntervId = setInterval(() => {
+      this.playAudio();
+    }, atInterval);
   }
 
   render() {
@@ -38,13 +40,12 @@ class MetronomeContainer extends Component{
             type="range"
             id="bpm"
             name="bpm"
-            onInput={this.handleBPMchange}
+            onClick={this.handleBPMchange}
             min= "0"
             max= "218"
           >
           </input>
           <label htmlFor="bpm">BPM</label>
-          <h5>{this.state.bpm}BPM</h5>
         </div>
       );
     }
