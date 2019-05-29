@@ -6,7 +6,9 @@ class MetronomeContainer extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      bpm: 100
+      bpm: 100,
+      minBPM: 0,
+      maxBPM: 218
     }
     this.handleBPMchange = this.handleBPMchange.bind(this);
   }
@@ -29,9 +31,14 @@ class MetronomeContainer extends Component{
         <h5>{this.state.bpm}BPM</h5>
         <PlayPauseButtons/>
         <RangeSlider
-        onChange={(newValue) => {this.handleBPMchange(newValue)}}
+        onChange={newValue => this.setState({bpm: newValue})}
         value={this.state.bpm}
+        style={{width: 300}}
+        step={1}
+        min={this.state.minBPM}
+        max={this.state.maxBPM}
         />
+        <h5>{this.state.bpm}BPM</h5>
       </div>
     )
   }
