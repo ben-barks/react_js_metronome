@@ -31,3 +31,14 @@
     transform: rotate(360deg);
   }
 }
+.main-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 0;
+  width: 400px;
+  height: 380px;
+  width: -webkit-fill-available;
+}
