@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import RangeSlider from '../components/RangeSlider';
+import PlayPauseButtons from '../components/PlayPauseButtons';
 
 class MetronomeContainer extends Component{
   constructor(props) {
@@ -15,7 +16,10 @@ class MetronomeContainer extends Component{
   }
 
   handleBPMchange(newValue){
-    const nIntervId = setInterval(this.changeBPM(newValue), 6);
+    let obj = {}
+    obj[newValue.target.bpm] = newValue.target.value;
+    this.setState(obj);
+    const nIntervId = setInterval(this.changeBPM(newValue), (newValue * 6));
   }
 
   render() {
@@ -23,7 +27,11 @@ class MetronomeContainer extends Component{
       <div>
         <h2>Metronome</h2>
         <h5>{this.state.bpm}BPM</h5>
-        <RangeSlider handleBPMchange={this.handleBPMchange}/>
+        <PlayPauseButtons/>
+        <RangeSlider
+        onChange={(newValue) => {this.handleBPMchange(newValue)}}
+        value={this.state.bpm}
+        />
       </div>
     )
   }
